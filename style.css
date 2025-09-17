@@ -1,0 +1,92 @@
+@charset "UTF-8";
+body {
+  font-family: Arial, sans-serif;
+  background: #111827;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-menu {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+.todo-menu h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #111827;
+}
+.todo-menu form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.todo-menu form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+.todo-menu form button {
+  background: #111827;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.todo-menu form button:hover {
+  background: rgb(1.5178571429, 2.1428571429, 3.4821428571);
+}
+.todo-menu ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+.todo-menu ul li {
+  background: #f1f1f1;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* mətnin yeni sətrə keçməsi üçün */
+  white-space: normal;
+  word-break: break-word;
+}
+.todo-menu ul li .task-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  word-break: break-word;
+}
+.todo-menu ul li .delete-btn {
+  margin-left: 10px;
+  background: #ff4d4f;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.todo-menu ul li .delete-btn:hover {
+  background: rgb(255, 26, 28.5730337079);
+}
+@media (max-width: 500px) {
+  .todo-menu .todo-menu {
+    width: 100%;
+    padding: 15px;
+  }
+  .todo-menu form {
+    flex-direction: column;
+  }
+  .todo-menu form button {
+    width: 100%;
+  }
+}/*# sourceMappingURL=style.css.map */

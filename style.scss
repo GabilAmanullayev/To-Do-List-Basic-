@@ -1,0 +1,113 @@
+$primary-color: #111827;
+$danger-color: #ff4d4f;
+$background: #111827;
+$text-color: #333;
+
+body {
+  font-family: Arial, sans-serif;
+  background: $background;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-menu {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: $primary-color;
+  }
+
+  form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    button {
+      background: $primary-color;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+// ...existing code...
+    li {
+      background: #f1f1f1;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      /* mətnin yeni sətrə keçməsi üçün */
+      white-space: normal;
+  
+      word-break: break-word;    
+  
+      .task-text {
+        flex: 1 1 auto;
+        min-width: 0;            
+        word-break: break-word;
+      }
+
+      .delete-btn {
+        margin-left: 10px;
+        background: $danger-color;
+        border: none;
+        color: white;
+        padding: 6px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background: darken($danger-color, 10%);
+        }
+      }
+    }
+
+    
+  }
+
+  @media (max-width: 500px) {
+    .todo-menu {
+      width: 100%;
+      padding: 15px;
+    }
+
+    form {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
