@@ -1,26 +1,48 @@
 const form = document.getElementById("todoForm");
-const input = document.getElementById("todoInput");
-const todoList = document.getElementById("todoList");
+    const input = document.getElementById("todoInput");
+    const todoList = document.getElementById("todoList");
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+    // localStorage-dən yüklə və ya boş array yarat
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-  const task = input.value.trim();
-  if (task === "") return;
+    // Səhifə yüklənəndə əvvəlki to-do-ları göstər
+    window.addEventListener("load", () => {
+      todos.forEach(task => addTodoToDOM(task));
+    });
 
-  const li = document.createElement("li");
-  li.textContent = task;
+    // Form submit
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
 
+      const task = input.value.trim();
+      if (task === "") return;
 
-  const deleteBtn = document.createElement("button");
-  deleteBtn.innerHTML = '<i class="material-icons">delete</i>';
-  deleteBtn.classList.add("delete-btn");
+      todos.push(task);
+      localStorage.setItem("todos", JSON.stringify(todos));
 
-  deleteBtn.addEventListener("click", () => {
-    li.remove();
-  });
+      addTodoToDOM(task);
 
-  li.appendChild(deleteBtn);
-  todoList.appendChild(li);
-  input.value = "";
-});
+      input.value = "";
+    });
+
+    // Funksiya: DOM-a li əlavə et
+    function addTodoToDOM(task) {
+      const li = document.createElement("li");
+      li.textContent = task;
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.innerHTML = '<i class="material-icons">delete</i>';
+      deleteBtn.classList.add("delete-btn");
+
+      deleteBtn.addEventListener("click", () => {
+        li.remove();
+        const index = todos.indexOf(task);
+        if (index > -1) {
+          todos.splice(index, 1);
+          localStorage.setItem("todos", JSON.stringify(todos));
+        }
+      });
+
+      li.appendChild(deleteBtn);
+      todoList.appendChild(li);
+    }
